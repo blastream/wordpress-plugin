@@ -1,7 +1,7 @@
 <?php
 /**
  * @package BLASTREAM
- * @version 1.0.1
+ * @version 1.0.0
  */
 /*
 Plugin Name: Blastream
@@ -9,6 +9,9 @@ Description: A plugin to integrate your blastream room within your wordpress web
 Version: 1.0.0
 Author URI: https://www.blastream.com/
 */
+
+define('BLASTREAM_APP_URL', 'app.v2.blastream.com');
+define('BLASTREAM_API_URL', 'api.v2.blastream.com');
 
 
 
@@ -26,14 +29,14 @@ function shortcode_room($attributes){
     if (!$slug) {
         return ("<h4>Error: slug is empty !</h4>");
     }
-    $slug_test = wp_remote_get("https://api.v2.blastream.com/channel/static/".$slug."/custom");
+    $slug_test = wp_remote_get("https://".BLASTREAM_API_URL."/channel/static/".$slug."/custom");
     $body = wp_remote_retrieve_body( $slug_test );
     $res = json_decode($body);
     if ($res->error) {
         return ("Error: ".$res->error);
     }
 
-    $src = "https://app.v2.blastream.com/".$slug;
+    $src = "https://".BLASTREAM_APP_URL."/".$slug;
 
     $iframe = "<iframe  allow='allowfullscreen; microphone; camera; display-capture' 
         src='".$src."'
