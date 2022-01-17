@@ -37,7 +37,10 @@ function shortcode_room($attributes){
     }
 
     $src = "https://".BLASTREAM_APP_URL."/".$slug;
-
+    $current_user = wp_get_current_user();
+    if ( $current_user->exists() ) {
+       $src = $src."?username=".$current_user->user_login;
+    } 
     $iframe = "<iframe  allow='allowfullscreen; microphone; camera; display-capture' 
         src='".$src."'
         style='height:".$height.";width:".$width.";border:none; margin:0; padding:0;overflow:hidden;margin:-5px;'>
