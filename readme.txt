@@ -3,6 +3,10 @@ Contributors: Streaminvaders
 Tags: iframe, livrestram, stream, video, videoconference
 Stable tag: 1.0.0
 License: GPLv2 or later
+Requires at least: 5.0
+Tested up to: 5.8
+Stable tag: 1.0.0
+License: GPLv2 or later
 
 The best anti-spam protection to block spam comments and spam in a contact form. The most trusted antispam solution for WordPress and WooCommerce.
 
